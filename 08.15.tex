@@ -7,17 +7,18 @@ b) $X_2 + 2X_3 \sim N\left(\mu + (2)\mu, \sigma^2 + (2)^2\sigma^2\right) = N(3\m
 
 c) $\frac{X_1 - X_2}{\sigma S_z \sqrt{2}}$:
 \begin{align*}
-\frac{X_1 - X_2}{\sigma S_z \sqrt{2}} &= \frac{Y}{\sigma S_z \sqrt{2}},\;Y=X_1 - X_2 \sim N(0, 2\sigma^2)\\
- &= \frac{\frac{Y}{\sqrt{2}}}{\sqrt{\frac{V_z}{(k-1)}}} \sim t(k-1), V_z = \frac{(k-1)S^2_z}{\sigma^2}
+Y &= X_1 - X_2 \sim N(0, 2\sigma^2) \\
+V_z &= \frac{(k-1)S^2_z}{\sigma^2} \\
+\frac{X_1 - X_2}{\sigma S_z \sqrt{2}} &= \frac{Y}{\sigma S_z \sqrt{2}} = \frac{\frac{Y}{\sqrt{2}}}{\sqrt{\frac{V_z}{(k-1)}}} \sim t(k-1)
 \end{align*}
 
 d) $Z^2_1 \sim \chi^2(1)$ (Theorem 8.3.5) \\
 
-e) $\frac{\sqrt{n} (\overline{X} - \mu)}{\sigma S_z}$: \\
+e) $\frac{\sqrt{n} (\overline{X} - \mu)}{\sigma S_z}$:
 \begin{align*}
-\frac{\sqrt{n} (\overline{X} - \mu)}{\sigma S_z} &= \frac{Z}{S_z},
-  \; Z = \frac{\sqrt{n} (\overline{X} - \mu)}{\sigma} \sim N(0, 1) \\
-  &= \frac{Z}{\sqrt{\frac{V_z}{(k-1)}}} \sim t(k-1), V_z = \frac{(k-1)S^2_z}{\sigma^2}
+Z &= \frac{\sqrt{n} (\overline{X} - \mu)}{\sigma} \sim N(0, 1) \\
+V_z &= \frac{(k-1)S^2_z}{\sigma^2} \\
+\frac{\sqrt{n} (\overline{X} - \mu)}{\sigma S_z} &= \frac{Z}{S_z} = \frac{Z}{\sqrt{\frac{V_z}{(k-1)}}} \sim t(k-1)
 \end{align*}
 
 f) $Z^2_1 + Z^2_2 = \chi^2_1(1) + \chi^2_2(1) = \chi^2(2)$ \\
@@ -33,12 +34,66 @@ Distribution is unknown.\\
 
 h) $\frac{Z^2_1}{\sqrt{Z^2_2}}$:
 \begin{align*}
-\frac{Z^2_1}{\sqrt{Z^2_2}} &= \frac{Z^2_1}{\sqrt{\frac{V}{1}}} \sim t(1),\; Z^2_2\sim \chi^2(1) = V \\
+Z^2_2 &\sim \chi^2(1) = V \\ \\
+\frac{Z^2_1}{\sqrt{Z^2_2}} &= \frac{Z^2_1}{\sqrt{\frac{V}{1}}} \sim t(1)
 \end{align*}
 
 i) $\frac{Z^2_1}{Z^2_2}$:
 \begin{align*}
-\frac{Z^2_1}{Z^2_2} &= \frac{\chi^2_1(1)}{\chi^2_2(1)},
-  \; Z^2_1 \sim \chi^2_1(1) = V_1,\; Z^2_2 \sim \chi^2_2(1) = V_2 \\
-  &= \frac{\frac{V_1}{1}}{\frac{V_2}{1}} \sim F(1, 1)
+Z^2_1 &\sim \chi^2_1(1) = V_1 \\
+Z^2_2 &\sim \chi^2_2(1) = V_2 \\
+\frac{Z^2_1}{Z^2_2} &= \frac{\chi^2_1(1)}{\chi^2_2(1)} = \frac{\frac{V_1}{1}}{\frac{V_2}{1}} \sim F(1, 1)
+\end{align*}
+
+j) $\frac{Z_1}{Z_2}$:
+\begin{align*}
+Y_1 &= \frac{Z_1}{Z_2}, Y_2 = Z_2 \\
+Z_1 &= Y_1 Y_2, Z_2 = Y_2 \\
+J=\left[
+\begin{matrix}
+y_2  & y_1 \\
+0     & 1
+\end{matrix}
+\right] \\
+det |J| &= y_2 \\
+f_{Y_1, Y_2}(y_1, y_2) &= f_{Z_1}(y_1 y_2) f_{Z_2}(y_2) = \frac{1}{2 \pi} e^{-\frac{y^2_1 y^2_2 + y^2_2}{2}} (y_2) \\
+  &= \frac{y_2 e^{-\frac{y^2_2(y^2_1 + 1)}{2}}}{2 \pi} \\
+f_{y_1}(y_1) &= \int\limits^{\infty}_{-\infty} f_{Y_1, Y_2}(y_1, y_2) dy_2 \\
+  &= \frac{1}{2 \pi} \int\limits^{\infty}_{-\infty} y_2 e^{-\frac{y^2_1 y^2_2 + y^2_2}{2}} dy_2 \\
+  &= \frac{1}{\pi \left(y^2_1 + 1\right)} \sim CAU(1, 0)
+\end{align*}
+
+l) $\frac{\sqrt{nk}\left(\overline{X}-\mu\right)}{\sigma \sqrt{\sum\limits^k_{i=1} Z^2_i}}$:
+\begin{align*}
+\frac{\sqrt{n}\left(\overline{X}-\mu\right)}{\sigma} &= W \sim N(0, 1) \\
+\sum\limits^k_{i=1} Z^2_i &= V \sim \chi^2\left(\sum\limits^k_{i=1} 1\right) = \chi^2(k) \\
+\frac{\sqrt{nk}\left(\overline{X}-\mu\right)}{\sigma \sqrt{\sum\limits^k_{i=1} Z^2_i}} &=
+  \frac{ \frac{\sqrt{n}\left(\overline{X}-\mu\right)}{\sigma} }{ \sqrt{\frac{\sum\limits^k_{i=1} Z^2_i}{k}} } = \frac{W}{\sqrt{\frac{V}{k}}} \sim t(k)
+\end{align*}
+
+m) $\frac{\sum\limits^n_{i=1} \left(x_i - \mu\right)^2}{\sigma^2} + \sum\limits^k_{i=1}\left(z_i + \overline{z}\right)^2$:
+\begin{align*}
+\frac{\sum\limits^n_{i=1} (x_i - \mu)^2}{\sigma^2} &= \sum\limits^n_{i=1}  \frac{(x_i - \mu)^2}{\sigma^2} \sim \chi^2(n) \\
+\sum\limits^k_{i=1}\left(z_i + \overline{z}\right)^2 &= (k-1) S^2 = \frac{(k-1) S^2}{1^2} \sim \chi^2(k-1) \\
+\frac{\sum\limits^n_{i=1} \left(x_i - \mu\right)^2}{\sigma^2} + \sum\limits^k_{i=1}\left(z_i + \overline{z}\right)^2 &\sim \chi^2(n) + \chi^2(k-1) = \chi^2(n+k-1)
+\end{align*}
+
+n) $\frac{\overline{X}}{\sigma^2} + \frac{\sum\limits^k_{i=1} Z_i}{k}$:
+\begin{align*}
+\overline{X} &\sim N\left(\mu, \frac{\sigma^2}{n}\right) \\
+\left(\frac{1}{\sigma^2}\right) \overline{X} &= \sum\limits^n_{i=1} \left(\frac{1}{\sigma^2}\right) \frac{X_i}{n}
+  \sim N\left(\sum\limits^n_{i=1} \left(\frac{1}{n\sigma^2}\right) \mu, \sum\limits^n_{i=1} \left(\frac{1}{n\sigma^2}\right)^2 \sigma^2 \right) \\
+  &= N\left(n \left(\frac{1}{n\sigma^2}\right) \mu, n \left(\frac{1}{n\sigma^2}\right)^2 \sigma^2 \right) = N\left( \frac{\mu}{\sigma^2}, \frac{1}{n\sigma^2}\right) \\ \\
+\frac{\sum\limits^k_{i=1} Z_i}{k} &\sim N\left( \sum\limits^k_{i=1} \left(\frac{1}{k}\right) (0), \sum\limits^k_{i=1} \left(\frac{1}{k}\right)^2 (1)\right) = N\left(0, \frac{1}{k}\right) \\ \\
+\frac{\overline{X}}{\sigma^2} + \frac{\sum\limits^k_{i=1} Z_i}{k} &= N\left( \frac{\mu}{\sigma^2}, \frac{1}{n\sigma^2} + \frac{1}{k} \right)
+\end{align*}
+
+o) $k\overline{Z}^2 = \chi^2(1)$ (Theorem 8.3.14) 
+
+p) $\frac{(k-1) \sum\limits^n_{i=1}(x_i - \overline{x})^2}{\sigma^2(n-1)\sum\limits^k_{i=1} (z_i - \overline{z})^2}$:
+\begin{align*}
+\frac{(k-1) \sum\limits^n_{i=1}(x_i - \overline{x})^2}{\sigma^2(n-1)\sum\limits^k_{i=1} (z_i - \overline{z})^2} &=
+  \frac{\frac{1^2 \sum\limits^n_{i=1}(x_i - \overline{x})^2}{(n-1)}}{\frac{\sigma^2\sum\limits^k_{i=1} (z_i - \overline{z})^2}{(k-1)}} 
+  = \frac{S^2_X}{S^2_Z \sigma^2}
+  = F(n-1, k-1) \\
 \end{align*}
